@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     private static GameController instance;
+    
     private void Awake()
     {
         if (instance == null)
@@ -20,13 +21,14 @@ public class GameController : MonoBehaviour
         }
     }
     private bool isPause = true;
+    private bool isPopupActive = false;
 
     public Text distanceText;
     private float distance;
     public float distanceIncreaseRate = 5f; // doem tang moi giay
     private float distanceTimer = 0f;
 
-
+    public Image img_pause;
     private void Start()
     {
         Pause(); 
@@ -34,7 +36,7 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        if(isPause && (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)))
+        if(isPause && (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && !isPopupActive)
         {
             Resume();
  
@@ -50,23 +52,26 @@ public class GameController : MonoBehaviour
             }
         }
     }
-    private void Pause()
+    public void Pause()
     {
         Time.timeScale = 0f; 
         isPause = true;
         Debug.Log("Game Paused");
     }
 
-    private void Resume()
+    public void Resume()
     {
         Time.timeScale = 1f;
         isPause = false;
+
         Debug.Log("Game Resumed");
     }
-    private void Restart()
+    public void Restart()
     {
         Time.timeScale = 1f;
         distance = 0f;
+        isPopupActive = false;
+        img_pause.gameObject.SetActive(false);
         SceneManager.LoadScene("Game");
         Debug.Log("Game Restarted");
     }
@@ -78,5 +83,11 @@ public class GameController : MonoBehaviour
     public static float GetScore()
     {
         return instance.distance;
+    }
+    public void PauseGame()
+    {
+        Pause();
+        img_pause.gameObject.SetActive(true);
+        isPopupActive = true;
     }
 }
