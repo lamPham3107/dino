@@ -403,7 +403,7 @@ GameObject:
   - component: {fileID: 8773056943859542133}
   m_Layer: 0
   m_Name: Map_01
-  m_TagString: Untagged
+  m_TagString: Startground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

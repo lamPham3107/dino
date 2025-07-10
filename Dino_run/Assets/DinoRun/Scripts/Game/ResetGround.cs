@@ -1,0 +1,60 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ResetGround : MonoBehaviour
+{
+    private Vector3 spawnPos;
+    public List<GameObject> groundPrefabs;
+    public List<float> groundWidths;
+    private float holeWidth = 3f;
+    private float Ground_width;
+
+
+    private Transform groundStart;
+    private void Start()
+    {
+        Ground_width = groundWidths[0];
+
+
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision != null && collision.transform.CompareTag("Endground"))
+        {
+            Transform groundParent = collision.transform.parent;
+            Destroy(groundParent.gameObject);
+        }
+        if(collision != null && collision.transform.CompareTag("Startground"))
+        {
+            Transform groundParent = collision.transform.parent;
+            groundStart = groundParent;
+
+            int randomIndex = Random.Range(0, groundPrefabs.Count);
+            float new_width = groundWidths[randomIndex];
+            float pos_X = groundParent.position.x + holeWidth + Ground_width  ;
+            spawnPos = new Vector3(pos_X, groundParent.position.y, 0f);
+            changeWidth(new_width);
+
+            SpawnGround(randomIndex);
+
+        }
+    }
+
+    private void SpawnGround(int id)
+    {
+        GameObject randomGround = groundPrefabs[id];
+
+        GameObject newGround = Instantiate(randomGround, spawnPos, Quaternion.identity);
+        newGround.transform.parent = GameObject.Find("Ground").transform;  // Gán làm con
+
+    }
+    private void changeWidth(float width)
+    {
+        Ground_width = width;
+
+    }
+
+
+
+}
