@@ -1,0 +1,160 @@
+
+E_01 khung long bay.png
+size: 1861,1799
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+1
+  rotate: true
+  xy: 1137, 725
+  size: 663, 406
+  orig: 663, 406
+  offset: 0, 0
+  index: -1
+2
+  rotate: false
+  xy: 2, 41
+  size: 700, 556
+  orig: 700, 556
+  offset: 0, 0
+  index: -1
+body
+  rotate: true
+  xy: 779, 608
+  size: 680, 356
+  orig: 680, 356
+  offset: 0, 0
+  index: -1
+eye open
+  rotate: false
+  xy: 1596, 148
+  size: 167, 167
+  orig: 167, 167
+  offset: 0, 0
+  index: -1
+eye open copy
+  rotate: false
+  xy: 937, 74
+  size: 167, 176
+  orig: 167, 176
+  offset: 0, 0
+  index: -1
+eye_defeat
+  rotate: false
+  xy: 983, 364
+  size: 99, 95
+  orig: 99, 95
+  offset: 0, 0
+  index: -1
+eye_inner
+  rotate: false
+  xy: 1047, 1301
+  size: 56, 87
+  orig: 56, 87
+  offset: 0, 0
+  index: -1
+eye_lid
+  rotate: true
+  xy: 1712, 1595
+  size: 202, 141
+  orig: 202, 141
+  offset: 0, 0
+  index: -1
+front_arm
+  rotate: false
+  xy: 1712, 1436
+  size: 144, 157
+  orig: 144, 157
+  offset: 0, 0
+  index: -1
+front_leg
+  rotate: true
+  xy: 704, 252
+  size: 345, 277
+  orig: 345, 277
+  offset: 0, 0
+  index: -1
+h4 copy
+  rotate: false
+  xy: 2, 1290
+  size: 1043, 507
+  orig: 1043, 507
+  offset: 0, 0
+  index: -1
+head3 copy
+  rotate: false
+  xy: 2, 599
+  size: 775, 689
+  orig: 775, 689
+  offset: 0, 0
+  index: -1
+head_ upper
+  rotate: false
+  xy: 1047, 1390
+  size: 663, 407
+  orig: 663, 407
+  offset: 0, 0
+  index: -1
+head_defeat
+  rotate: false
+  xy: 1137, 317
+  size: 663, 406
+  orig: 663, 406
+  offset: 0, 0
+  index: -1
+jaw
+  rotate: true
+  xy: 1545, 773
+  size: 615, 122
+  orig: 615, 122
+  offset: 0, 0
+  index: -1
+rear_arm
+  rotate: false
+  xy: 983, 461
+  size: 133, 145
+  orig: 133, 145
+  offset: 0, 0
+  index: -1
+rear_leg
+  rotate: true
+  xy: 1106, 39
+  size: 276, 311
+  orig: 276, 311
+  offset: 0, 0
+  index: -1
+s1
+  rotate: true
+  xy: 1419, 2
+  size: 145, 54
+  orig: 145, 54
+  offset: 0, 0
+  index: -1
+s2
+  rotate: true
+  xy: 1669, 797
+  size: 294, 178
+  orig: 294, 178
+  offset: 0, 0
+  index: -1
+s3
+  rotate: true
+  xy: 1669, 1093
+  size: 295, 190
+  orig: 295, 190
+  offset: 0, 0
+  index: -1
+s4
+  rotate: false
+  xy: 704, 61
+  size: 231, 189
+  orig: 231, 189
+  offset: 0, 0
+  index: -1
+s5
+  rotate: false
+  xy: 1419, 149
+  size: 175, 166
+  orig: 175, 166
+  offset: 0, 0
+  index: -1

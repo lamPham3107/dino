@@ -9,9 +9,12 @@ public class DinoController : MonoBehaviour
     private float jumpForce = 20f;
 
 
+    public static Animator animator;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
     private void Update()
     {
@@ -38,7 +41,9 @@ public class DinoController : MonoBehaviour
     {
         if (CheckGrounded.Instance.isGrounded)
         {
+
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+
         }
     }
     private bool IsPointerOverUI()

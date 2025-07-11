@@ -30,7 +30,8 @@ public class ResetGround : MonoBehaviour
             Transform groundParent = collision.transform.parent;
             groundStart = groundParent;
 
-            int randomIndex = Random.Range(0, groundPrefabs.Count);
+            int maxGround = unlockGround();
+            int randomIndex = Random.Range(0, maxGround);
             //int randomIndex = 4;
             float new_width = groundWidths[randomIndex];
             float pos_X = groundParent.position.x + holeWidth + Ground_width;
@@ -44,7 +45,6 @@ public class ResetGround : MonoBehaviour
     private void SpawnGround(int id)
     {
         GameObject randomGround = groundPrefabs[id];
-
         GameObject newGround = Instantiate(randomGround, spawnPos, Quaternion.identity);
         newGround.transform.parent = GameObject.Find("Ground").transform;  // Gán làm con
 
@@ -55,6 +55,19 @@ public class ResetGround : MonoBehaviour
 
     }
 
+    private int unlockGround()
+    {
+        
+        if (LandMove.speed > 7f)
+        {
+            return groundPrefabs.Count;
+        }
+        else
+        {
+            return 3;
+        }
+       ;
+    }
 
 
 }

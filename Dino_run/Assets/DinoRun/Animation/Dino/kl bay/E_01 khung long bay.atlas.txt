@@ -1,0 +1,83 @@
+
+E_01 khung long bay.png
+size: 2028,1261
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Layer 31
+  rotate: false
+  xy: 1424, 1021
+  size: 483, 238
+  orig: 483, 238
+  offset: 0, 0
+  index: -1
+Layer 32
+  rotate: true
+  xy: 1626, 569
+  size: 231, 131
+  orig: 231, 131
+  offset: 0, 0
+  index: -1
+Layer 33
+  rotate: true
+  xy: 1424, 584
+  size: 435, 200
+  orig: 435, 200
+  offset: 0, 0
+  index: -1
+Layer 34
+  rotate: false
+  xy: 1626, 802
+  size: 314, 217
+  orig: 314, 217
+  offset: 0, 0
+  index: -1
+Layer 35
+  rotate: true
+  xy: 2, 421
+  size: 838, 729
+  orig: 838, 729
+  offset: 0, 0
+  index: -1
+Layer 36
+  rotate: false
+  xy: 824, 2
+  size: 507, 549
+  orig: 507, 549
+  offset: 0, 0
+  index: -1
+Layer 37
+  rotate: false
+  xy: 2, 85
+  size: 820, 334
+  orig: 820, 334
+  offset: 0, 0
+  index: -1
+Layer 38
+  rotate: false
+  xy: 922, 558
+  size: 500, 701
+  orig: 500, 701
+  offset: 0, 0
+  index: -1
+Layer 39
+  rotate: true
+  xy: 1333, 12
+  size: 544, 686
+  orig: 544, 686
+  offset: 0, 0
+  index: -1
+Layer 40
+  rotate: true
+  xy: 733, 553
+  size: 706, 187
+  orig: 706, 187
+  offset: 0, 0
+  index: -1
+Layer 41
+  rotate: false
+  xy: 1759, 587
+  size: 267, 213
+  orig: 267, 213
+  offset: 0, 0
+  index: -1

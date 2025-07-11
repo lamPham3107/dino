@@ -43,4 +43,9 @@ public class CheckGrounded : MonoBehaviour
             isGrounded = true;
         }
     }
+
+    private void setRun()
+    {
+       DinoController.animator.SetTrigger("run");
+    }
 }
