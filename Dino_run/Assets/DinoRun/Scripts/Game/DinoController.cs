@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class DinoController : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class DinoController : MonoBehaviour
     }
     private void Update()
     {
+
+
+        if (IsPointerOverUI())
+            return;
         // Check for jump input
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
@@ -26,7 +31,7 @@ public class DinoController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            EndGame();
+            GameController.instance.EndGame();
         }
     }
     private void jump()
@@ -36,8 +41,19 @@ public class DinoController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
     }
-    private void EndGame()
+    private bool IsPointerOverUI()
     {
-        Debug.Log("Game Over");
+#if UNITY_ANDROID || UNITY_IOS
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+            return EventSystem.current.IsPointerOverGameObject(touch.fingerId);
+        }
+        return false;
+#else
+    return EventSystem.current.IsPointerOverGameObject();
+#endif
     }
+
+
 }

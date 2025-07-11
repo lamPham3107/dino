@@ -6,29 +6,37 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    private static GameController instance;
+    public static GameController instance;
     
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject); // Keep this object across scenes
         }
         else
         {
             Destroy(gameObject); // Ensure only one instance exists
         }
     }
-    private bool isPause = true;
-    private bool isPopupActive = false;
+
+
 
     public Text distanceText;
     private float distance;
-    public float distanceIncreaseRate = 5f; // doem tang moi giay
+    public float distanceIncreaseRate = 5f; // diem tang moi giay
     private float distanceTimer = 0f;
 
     public Image img_pause;
+    private bool isPause = true;
+    private bool isPopupActive = false;
+
+
+
+    public GameObject pn_EndGame;
+    public Text txt_distance_endgame;
+    public Text txt_highest;
+    private bool isEndGame = false;
     private void Start()
     {
         Pause(); 
@@ -36,7 +44,7 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        if(isPause && (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && !isPopupActive)
+        if(isPause && (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && !isPopupActive && !isEndGame)
         {
             Resume();
  
@@ -63,7 +71,8 @@ public class GameController : MonoBehaviour
     {
         Time.timeScale = 1f;
         isPause = false;
-
+        isPopupActive = false;
+        img_pause.gameObject.SetActive(false);
         Debug.Log("Game Resumed");
     }
     public void Restart()
@@ -89,5 +98,25 @@ public class GameController : MonoBehaviour
         Pause();
         img_pause.gameObject.SetActive(true);
         isPopupActive = true;
+    }
+    public void EndGame()
+    {
+
+        Pause();
+        SaveHighestScore();
+        isEndGame = true;
+        txt_distance_endgame.text = distance.ToString("0") + "m";
+        txt_highest.text = PlayerPrefs.GetFloat("HighestScore", 0f).ToString("0") + "m";
+        pn_EndGame.SetActive(true);
+    }
+    public void SaveHighestScore()
+    {
+        float currentScore = GetScore();
+        float highestScore = PlayerPrefs.GetFloat("HighestScore", 0f);
+        if (currentScore > highestScore)
+        {
+            PlayerPrefs.SetFloat("HighestScore", currentScore);
+            PlayerPrefs.Save();
+        }
     }
 }

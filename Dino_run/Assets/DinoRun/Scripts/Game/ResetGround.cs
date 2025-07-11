@@ -7,7 +7,7 @@ public class ResetGround : MonoBehaviour
     private Vector3 spawnPos;
     public List<GameObject> groundPrefabs;
     public List<float> groundWidths;
-    private float holeWidth = 3f;
+    private float holeWidth = 5f;
     private float Ground_width;
 
 
@@ -31,13 +31,13 @@ public class ResetGround : MonoBehaviour
             groundStart = groundParent;
 
             int randomIndex = Random.Range(0, groundPrefabs.Count);
+            //int randomIndex = 4;
             float new_width = groundWidths[randomIndex];
-            float pos_X = groundParent.position.x + holeWidth + Ground_width  ;
+            float pos_X = groundParent.position.x + holeWidth + Ground_width;
+
             spawnPos = new Vector3(pos_X, groundParent.position.y, 0f);
             changeWidth(new_width);
-
             SpawnGround(randomIndex);
-
         }
     }
 
