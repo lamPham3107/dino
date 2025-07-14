@@ -28,7 +28,7 @@ public class GameController : MonoBehaviour
     private float distanceTimer = 0f;
 
     public Image img_pause;
-    private bool isPause = true;
+    public bool isPause = true;
     private bool isPopupActive = false;
 
 
@@ -47,7 +47,7 @@ public class GameController : MonoBehaviour
         if(isPause && (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && !isPopupActive && !isEndGame)
         {
             Resume();
- 
+
         }
         if (!isPause)
         {
@@ -77,6 +77,7 @@ public class GameController : MonoBehaviour
     }
     public void Restart()
     {
+
         Time.timeScale = 1f;
         distance = 0f;
         isPopupActive = false;
@@ -98,9 +99,17 @@ public class GameController : MonoBehaviour
         Pause();
         img_pause.gameObject.SetActive(true);
         isPopupActive = true;
+
     }
     public void EndGame()
     {
+        StartCoroutine(WaitAndEndGame());
+    }
+
+    private IEnumerator WaitAndEndGame()
+    {
+        DinoController.animator.SetTrigger("die");
+        yield return new WaitForSeconds(1f); 
 
         Pause();
         SaveHighestScore();

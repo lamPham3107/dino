@@ -6,8 +6,8 @@ using UnityEngine.EventSystems;
 public class DinoController : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private float jumpForce = 20f;
-
+    private float jumpForce = 17f;
+    private bool isStarted = true;
 
     public static Animator animator;
 
@@ -19,13 +19,21 @@ public class DinoController : MonoBehaviour
     private void Update()
     {
 
-
         if (IsPointerOverUI())
             return;
+        animator.SetBool("isGrounded", CheckGrounded.Instance.isGrounded);
         // Check for jump input
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)))
         {
-            jump();
+            if (isStarted)
+            {
+                isStarted = false;
+            }
+            else
+            {
+                jump();
+            }
+
         }
 
     }
@@ -60,5 +68,23 @@ public class DinoController : MonoBehaviour
 #endif
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision != null && collision.CompareTag("Bug"))
+        {
+            StartCoroutine(WaitEat(collision.gameObject));
+        }
+    }
+
+    private IEnumerator WaitEat(GameObject bug)
+    {
+        animator.SetBool("eat", true);
+
+        yield return new WaitForSeconds(0.3f);
+        Destroy(bug);
+        animator.SetBool("eat", false);
+
+
+    }
 
 }

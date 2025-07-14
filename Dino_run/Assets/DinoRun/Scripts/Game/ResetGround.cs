@@ -40,6 +40,10 @@ public class ResetGround : MonoBehaviour
             changeWidth(new_width);
             SpawnGround(randomIndex);
         }
+        if(collision != null && collision.transform.CompareTag("Bug"))
+        {
+            Destroy(collision.gameObject);
+        }
     }
 
     private void SpawnGround(int id)
@@ -58,7 +62,7 @@ public class ResetGround : MonoBehaviour
     private int unlockGround()
     {
         
-        if (LandMove.speed > 7f)
+        if (LandMove.speed > 10f)
         {
             return groundPrefabs.Count;
         }
