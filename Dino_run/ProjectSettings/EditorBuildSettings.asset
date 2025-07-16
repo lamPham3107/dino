@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/DinoRun/Scenes/Home.unity
+    guid: e6088cabe92f9bc499b967db0db05645
+  - enabled: 1
     path: Assets/DinoRun/Scenes/Game.unity
     guid: 2c06190e9c1848447b9c4e465ea61ec6
   m_configObjects: {}

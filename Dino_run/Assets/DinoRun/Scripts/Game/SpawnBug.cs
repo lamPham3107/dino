@@ -17,7 +17,7 @@ public class SpawnBug : MonoBehaviour
     private void Update()
     {
 
-        if (!canSpawn && GameController.GetScore() > 0)
+        if (!canSpawn && GameController.GetDistance() > 200)
         {
             canSpawn = true;
         }

@@ -16,5 +16,13 @@ public class BugController : MonoBehaviour
         transform.Translate(Vector3.left * bugSpeed * Time.deltaTime);
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Character"))
+        {
+            bugSpeed = 0f;
+        }
+
+    }
 
 }

@@ -26,6 +26,7 @@ public class GameController : MonoBehaviour
     private float distance;
     public float distanceIncreaseRate = 5f; // diem tang moi giay
     private float distanceTimer = 0f;
+    private float score;
 
     public Image img_pause;
     public bool isPause = true;
@@ -35,10 +36,11 @@ public class GameController : MonoBehaviour
 
     public GameObject pn_EndGame;
     public Text txt_distance_endgame;
-    public Text txt_highest;
+    public Text txt_score;
     private bool isEndGame = false;
     private void Start()
     {
+        SoundController.instance.PlaySound();
         Pause(); 
     }
 
@@ -90,7 +92,7 @@ public class GameController : MonoBehaviour
         distance++;
         distanceText.text = distance.ToString("0") + " m";
     }
-    public static float GetScore()
+    public static float GetDistance()
     {
         return instance.distance;
     }
@@ -109,23 +111,30 @@ public class GameController : MonoBehaviour
     private IEnumerator WaitAndEndGame()
     {
         DinoController.animator.SetTrigger("die");
-        yield return new WaitForSeconds(1f); 
+        yield return new WaitForSeconds(0.5f); 
 
         Pause();
-        SaveHighestScore();
+        //SaveHighestScore();
         isEndGame = true;
         txt_distance_endgame.text = distance.ToString("0") + "m";
-        txt_highest.text = PlayerPrefs.GetFloat("HighestScore", 0f).ToString("0") + "m";
+        //txt_highest.text = PlayerPrefs.GetFloat("HighestScore", 0f).ToString("0") + "m";
+        txt_score.text = GetScore().ToString("0") + "m";
         pn_EndGame.SetActive(true);
     }
-    public void SaveHighestScore()
+    //public void SaveHighestScore()
+    //{
+    //    float currentScore = GetScore();
+    //    float highestScore = PlayerPrefs.GetFloat("HighestScore", 0f);
+    //    if (currentScore > highestScore)
+    //    {
+    //        PlayerPrefs.SetFloat("HighestScore", currentScore);
+    //        PlayerPrefs.Save();
+    //    }
+    //}
+
+    public float GetScore()
     {
-        float currentScore = GetScore();
-        float highestScore = PlayerPrefs.GetFloat("HighestScore", 0f);
-        if (currentScore > highestScore)
-        {
-            PlayerPrefs.SetFloat("HighestScore", currentScore);
-            PlayerPrefs.Save();
-        }
+        score =  distance * 10 + DinoController.BugCount * 100;
+        return score ;
     }
 }

@@ -10,7 +10,8 @@ public class DinoController : MonoBehaviour
     private bool isStarted = true;
 
     public static Animator animator;
-
+    public GameObject smokePrefab; // gán trong Inspector
+    public static int BugCount;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -36,6 +37,7 @@ public class DinoController : MonoBehaviour
 
         }
 
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -56,17 +58,20 @@ public class DinoController : MonoBehaviour
     }
     private bool IsPointerOverUI()
     {
-#if UNITY_ANDROID || UNITY_IOS
-        if (Input.touchCount > 0)
+        if (Application.isMobilePlatform)
         {
-            Touch touch = Input.GetTouch(0);
-            return EventSystem.current.IsPointerOverGameObject(touch.fingerId);
+            if (Input.touchCount > 0)
+            {
+                return EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId);
+            }
+        }
+        else
+        {
+            return EventSystem.current.IsPointerOverGameObject();
         }
         return false;
-#else
-    return EventSystem.current.IsPointerOverGameObject();
-#endif
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -79,11 +84,15 @@ public class DinoController : MonoBehaviour
     private IEnumerator WaitEat(GameObject bug)
     {
         animator.SetBool("eat", true);
-
+        if (smokePrefab != null)
+        {
+            Vector3 smokePos = new Vector3(bug.transform.position.x - 3f, bug.transform.position.y , 0f);
+            Instantiate(smokePrefab, smokePos, Quaternion.identity);
+        }
         yield return new WaitForSeconds(0.3f);
         Destroy(bug);
         animator.SetBool("eat", false);
-
+        BugCount++;
 
     }
 

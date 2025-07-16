@@ -8,7 +8,7 @@ public class LandMove : MonoBehaviour
     public static float speed;
     void Update()
     {
-        speed = baseSpeed + GameController.GetScore() / 100f;
+        speed = baseSpeed + GameController.GetDistance() / 200f;
         transform.Translate(Vector3.left * speed * Time.deltaTime);
     }
 

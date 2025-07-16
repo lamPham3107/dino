@@ -62,13 +62,13 @@ public class ResetGround : MonoBehaviour
     private int unlockGround()
     {
         
-        if (LandMove.speed > 10f)
+        if (LandMove.speed > 11f)
         {
             return groundPrefabs.Count;
         }
         else
         {
-            return 3;
+            return 2;
         }
        ;
     }
