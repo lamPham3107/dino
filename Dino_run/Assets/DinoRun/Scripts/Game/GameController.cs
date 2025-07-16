@@ -40,7 +40,7 @@ public class GameController : MonoBehaviour
     private bool isEndGame = false;
     private void Start()
     {
-        SoundController.instance.PlaySound();
+        SoundController.instance.PlayBackgroundSound();
         Pause(); 
     }
 
@@ -105,14 +105,15 @@ public class GameController : MonoBehaviour
     }
     public void EndGame()
     {
+        SoundController.instance.StopSound();
+        SoundController.instance.PlayGameOverSound();
         StartCoroutine(WaitAndEndGame());
     }
 
     private IEnumerator WaitAndEndGame()
     {
         DinoController.animator.SetTrigger("die");
-        yield return new WaitForSeconds(0.5f); 
-
+        yield return new WaitForSeconds(0.5f);
         Pause();
         //SaveHighestScore();
         isEndGame = true;

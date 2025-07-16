@@ -8,9 +8,11 @@ public class UIClick : MonoBehaviour
     public void LoadHome()
     {
         SceneManager.LoadScene("Home");
+        SoundController.instance.PlayHomeSound();
     }
     public void LoadGame()
     {
         SceneManager.LoadScene("Game");
+        SoundController.instance.PlayBackgroundSound();
     }
 }

@@ -8,6 +8,7 @@ public class SoundController : MonoBehaviour
 
     private void Awake()
     {
+
         if (instance == null)
         {
             instance = this;
@@ -18,9 +19,21 @@ public class SoundController : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+        PlayHomeSound();
+
+    }
     public AudioClip backgroundMusic;
+    public AudioClip gameoverMusic;
+    public AudioClip homeSound;
     private AudioSource audioSource;
-    public void PlaySound()
+    public void PlayBackgroundSound()
     {
         if (backgroundMusic != null && audioSource != null)
         {
@@ -29,10 +42,29 @@ public class SoundController : MonoBehaviour
             audioSource.Play();
         }
     }
-
+    public void PlayHomeSound()
+    {
+        if (homeSound != null && audioSource != null)
+        {
+            audioSource.clip = homeSound;
+            audioSource.loop = true;
+            audioSource.Play();
+        }
+    }
+    public void PlayGameOverSound()
+    {
+        if (gameoverMusic != null && audioSource != null)
+        {
+            audioSource.clip = gameoverMusic;
+            audioSource.loop = false;
+            audioSource.Play();
+        }
+    }
     public void StopSound()
     {
         if (audioSource != null)
             audioSource.Stop();
     }
+
+
 }
