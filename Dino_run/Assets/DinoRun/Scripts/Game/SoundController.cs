@@ -21,6 +21,7 @@ public class SoundController : MonoBehaviour
     }
     private void Start()
     {
+        Application.targetFrameRate = 60;
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
         {

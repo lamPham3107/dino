@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LandMove : MonoBehaviour
 {
-    private float baseSpeed = 10f; // Speed of the land movement
+    private float baseSpeed = 9f; // Speed of the land movement
     public static float speed;
     void Update()
     {

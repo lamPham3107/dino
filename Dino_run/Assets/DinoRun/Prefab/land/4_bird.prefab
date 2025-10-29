@@ -128,7 +128,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.28, y: 2.56}
+  m_Size: {x: 1.28, y: 1.47}
   m_EdgeRadius: 0
 --- !u!1 &1553102035833194054
 GameObject:
@@ -438,7 +438,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.28, y: 2.56}
+  m_Size: {x: 1.28, y: 1.47}
   m_EdgeRadius: 0
 --- !u!1001 &1124324264947475521
 PrefabInstance:
@@ -572,10 +572,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1797593228539210156}
     m_Modifications:
-    - target: {fileID: 6986875293944662386, guid: e8a69e49eaacb7d4586cea1a6d6f6fb8, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 7916226285605188220, guid: e8a69e49eaacb7d4586cea1a6d6f6fb8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -481.2

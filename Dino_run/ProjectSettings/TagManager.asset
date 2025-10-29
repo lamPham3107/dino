@@ -9,6 +9,7 @@ TagManager:
   - Endground
   - Startground
   - Bug
+  - Ground
   layers:
   - Default
   - TransparentFX

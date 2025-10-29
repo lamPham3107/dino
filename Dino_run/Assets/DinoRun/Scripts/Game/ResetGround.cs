@@ -15,8 +15,6 @@ public class ResetGround : MonoBehaviour
     private void Start()
     {
         Ground_width = groundWidths[0];
-
-
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -32,7 +30,7 @@ public class ResetGround : MonoBehaviour
 
             int maxGround = unlockGround();
             int randomIndex = Random.Range(0, maxGround);
-            //int randomIndex = 4;
+
             float new_width = groundWidths[randomIndex];
             float pos_X = groundParent.position.x + holeWidth + Ground_width;
 
@@ -61,16 +59,21 @@ public class ResetGround : MonoBehaviour
 
     private int unlockGround()
     {
-        
+
         if (LandMove.speed > 11f)
         {
             return groundPrefabs.Count;
         }
+        else if (LandMove.speed > 10f && LandMove.speed <= 11f)
+        {
+            return 6;
+        }
         else
         {
-            return 2;
-        }
-       ;
+            return 3;
+        };
+
+
     }
 
 

@@ -24,21 +24,21 @@ public class CheckGrounded : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision != null && !collision.gameObject.CompareTag("Character") && !collision.gameObject.CompareTag("Enemy"))
+        if (collision != null && !collision.gameObject.CompareTag("Character") && !collision.gameObject.CompareTag("Enemy") && !collision.gameObject.CompareTag("Bug"))
         {
             isGrounded = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision != null && !collision.gameObject.CompareTag("Character"))
+        if (collision != null && !collision.gameObject.CompareTag("Character") && !collision.gameObject.CompareTag("Bug"))
         {
             isGrounded = false;
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision != null && !collision.gameObject.CompareTag("Character") && !collision.gameObject.CompareTag("Enemy"))
+        if (collision != null && !collision.gameObject.CompareTag("Character") && !collision.gameObject.CompareTag("Enemy") && !collision.gameObject.CompareTag("Bug"))
         {
             isGrounded = true;
         }
