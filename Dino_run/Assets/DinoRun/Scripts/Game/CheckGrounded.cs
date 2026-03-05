@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,46 +6,25 @@ public class CheckGrounded : MonoBehaviour
 {
     public bool isGrounded;
     public static CheckGrounded Instance { get; private set; }
+    [SerializeField] public float range = 2f;
+    public LayerMask groundLayer; 
 
-    public void Awake()
+    private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-    private void Start()
-    {
-        isGrounded = true;
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision != null && !collision.gameObject.CompareTag("Character") && !collision.gameObject.CompareTag("Enemy") && !collision.gameObject.CompareTag("Bug"))
-        {
-            isGrounded = true;
-        }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision != null && !collision.gameObject.CompareTag("Character") && !collision.gameObject.CompareTag("Bug"))
-        {
-            isGrounded = false;
-        }
-    }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision != null && !collision.gameObject.CompareTag("Character") && !collision.gameObject.CompareTag("Enemy") && !collision.gameObject.CompareTag("Bug"))
-        {
-            isGrounded = true;
-        }
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
     }
 
-    private void setRun()
+    private void Update()
     {
-       DinoController.animator.SetTrigger("run");
+        Vector2 rayOrigin = new Vector2(transform.position.x, transform.position.y - range);
+        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, 0.5f);
+
+        // Check tag thay vì layer
+        isGrounded = hit.collider != null && hit.collider.CompareTag("Ground");
+        Debug.DrawRay(transform.position, Vector2.down * 1f,
+        isGrounded ? Color.green : Color.red);
+       
     }
+
 }

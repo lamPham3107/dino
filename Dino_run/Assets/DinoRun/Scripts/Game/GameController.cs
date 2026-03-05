@@ -135,7 +135,7 @@ public class GameController : MonoBehaviour
 
     public float GetScore()
     {
-        score =  distance * 10 + DinoController.BugCount * 100;
+        score =  distance * 10 + Eat.BugCount * 100;
         return score ;
     }
 }

@@ -17,7 +17,7 @@ public class SpawnBug : MonoBehaviour
     private void Update()
     {
 
-        if (!canSpawn && GameController.GetDistance() > 200)
+        if (!canSpawn && GameController.GetDistance() > 20)
         {
             canSpawn = true;
         }
@@ -28,7 +28,8 @@ public class SpawnBug : MonoBehaviour
 
             if (timer <= 0f)
             {
-                int ramdomSpawnQuantity = Random.Range(1, 3);
+                //int ramdomSpawnQuantity = Random.Range(1, 3);
+                int ramdomSpawnQuantity = 1;
                 while (ramdomSpawnQuantity > 0)
                 {
                     ramdomSpawnQuantity--;

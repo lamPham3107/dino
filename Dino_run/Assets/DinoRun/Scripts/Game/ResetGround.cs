@@ -48,7 +48,7 @@ public class ResetGround : MonoBehaviour
     {
         GameObject randomGround = groundPrefabs[id];
         GameObject newGround = Instantiate(randomGround, spawnPos, Quaternion.identity);
-        newGround.transform.parent = GameObject.Find("Ground").transform;  // Gán làm con
+        newGround.transform.parent = GameObject.Find("GroundList").transform;  // Gán làm con
 
     }
     private void changeWidth(float width)
