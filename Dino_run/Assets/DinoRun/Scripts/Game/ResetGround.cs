@@ -7,14 +7,15 @@ public class ResetGround : MonoBehaviour
     private Vector3 spawnPos;
     public List<GameObject> groundPrefabs;
     public List<float> groundWidths;
-    private float holeWidth = 5f;
+    private float holeWidth = 5.5f;
     private float Ground_width;
-
+    private Transform groundListParent;
 
     private Transform groundStart;
     private void Start()
     {
         Ground_width = groundWidths[0];
+        groundListParent = GameObject.Find("GroundList").transform;
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -48,8 +49,17 @@ public class ResetGround : MonoBehaviour
     {
         GameObject randomGround = groundPrefabs[id];
         GameObject newGround = Instantiate(randomGround, spawnPos, Quaternion.identity);
-        newGround.transform.parent = GameObject.Find("GroundList").transform;  // Gán làm con
+        StartCoroutine(SetParentNextFrame(newGround));
 
+    }
+
+    private IEnumerator SetParentNextFrame(GameObject newGround)
+    {
+        yield return null; // Chờ 1 frame
+        if (newGround != null && groundListParent != null)
+        {
+            newGround.transform.parent = groundListParent;
+        }
     }
     private void changeWidth(float width)
     {
@@ -59,19 +69,19 @@ public class ResetGround : MonoBehaviour
 
     private int unlockGround()
     {
-
-        if (LandMove.speed > 11f)
-        {
-            return groundPrefabs.Count;
-        }
-        else if (LandMove.speed > 10f && LandMove.speed <= 11f)
-        {
-            return 6;
-        }
-        else
-        {
-            return 3;
-        };
+        return groundPrefabs.Count;
+        //if (LandMove.speed > 11f)
+        //{
+        //    return groundPrefabs.Count;
+        //}
+        //else if (LandMove.speed > 10f && LandMove.speed <= 11f)
+        //{
+        //    return 6;
+        //}
+        //else
+        //{
+        //    return 3;
+        //};
 
 
     }

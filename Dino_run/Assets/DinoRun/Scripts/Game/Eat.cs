@@ -6,6 +6,7 @@ using UnityEngine;
 public class Eat : MonoBehaviour
 {
     public GameObject smokePrefab; // gán trong Inspector
+    public GameObject smoke;
     private bool isEating = false;
     public static int BugCount;
     private void OnTriggerEnter2D(Collider2D collision)
@@ -26,13 +27,14 @@ public class Eat : MonoBehaviour
         if (smokePrefab != null)
         {
             Vector3 smokePos = new Vector3(bug.transform.position.x - 3f, bug.transform.position.y, 0f);
-            Instantiate(smokePrefab, smokePos, Quaternion.identity);
+            smoke = Instantiate(smokePrefab, smokePos, Quaternion.identity);
         }
 
         yield return new WaitForSeconds(0.1f);
         Destroy(bug);
         DinoController.animator.SetBool("eat", false);
         isEating = false;
+        Destroy(smoke);
         BugCount++;
 
     }
