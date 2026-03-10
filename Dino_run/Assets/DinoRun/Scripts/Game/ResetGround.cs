@@ -19,6 +19,8 @@ public class ResetGround : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (GameController.instance.isEndGame) return;
+
         if (collision != null && collision.transform.CompareTag("Endground"))
         {
             Transform groundParent = collision.transform.parent;
@@ -47,6 +49,8 @@ public class ResetGround : MonoBehaviour
 
     private void SpawnGround(int id)
     {
+        if (GameController.instance.isEndGame) return;
+
         GameObject randomGround = groundPrefabs[id];
         GameObject newGround = Instantiate(randomGround, spawnPos, Quaternion.identity);
         StartCoroutine(SetParentNextFrame(newGround));
@@ -69,19 +73,19 @@ public class ResetGround : MonoBehaviour
 
     private int unlockGround()
     {
-        return groundPrefabs.Count;
-        //if (LandMove.speed > 11f)
-        //{
-        //    return groundPrefabs.Count;
-        //}
-        //else if (LandMove.speed > 10f && LandMove.speed <= 11f)
-        //{
-        //    return 6;
-        //}
-        //else
-        //{
-        //    return 3;
-        //};
+        //return groundPrefabs.Count;
+        if (LandMove.speed > 11f)
+        {
+            return groundPrefabs.Count;
+        }
+        else if (LandMove.speed > 10f && LandMove.speed <= 11f)
+        {
+            return 6;
+        }
+        else
+        {
+            return 3;
+        };
 
 
     }

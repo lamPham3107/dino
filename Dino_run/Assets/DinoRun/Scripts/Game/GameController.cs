@@ -37,7 +37,7 @@ public class GameController : MonoBehaviour
     public GameObject pn_EndGame;
     public Text txt_distance_endgame;
     public Text txt_score;
-    private bool isEndGame = false;
+    public bool isEndGame = false;
     private void Start()
     {
         SoundController.instance.PlayBackgroundSound();

@@ -6,8 +6,6 @@ public class CheckGrounded : MonoBehaviour
 {
     public bool isGrounded;
     public static CheckGrounded Instance { get; private set; }
-    [SerializeField] public float range = 2f;
-    public LayerMask groundLayer; 
 
     private void Awake()
     {
@@ -15,16 +13,20 @@ public class CheckGrounded : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    private void Update()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        Vector2 rayOrigin = new Vector2(transform.position.x, transform.position.y - range);
-        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, 0.5f);
-
-        // Check tag thay vì layer
-        isGrounded = hit.collider != null && hit.collider.CompareTag("Ground");
-        Debug.DrawRay(transform.position, Vector2.down * 1f,
-        isGrounded ? Color.green : Color.red);
-       
+        if (other.CompareTag("Ground"))
+            isGrounded = true;
     }
 
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Ground"))
+            isGrounded = false;
+    }
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Ground"))
+            isGrounded = true;
+    }
 }
